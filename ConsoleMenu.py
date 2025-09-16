@@ -1,4 +1,4 @@
-import re
+import re  
 from student import Student 
 
 
@@ -46,7 +46,7 @@ class ConsoleMenu:
 
      def LoadFromFile(self):
         data = self.db.load()
-        print('Data from file: ')
+        print('Downloaded from file: ')
         
         for line in data:
             print(line.strip())
