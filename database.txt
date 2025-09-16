@@ -1,0 +1,9 @@
+Student MichaelSviastin
+{
+  "firstname": "Michael",
+  "lastname": "Sviastin",
+  "studentId": "KB №23458796",
+  "course": "2",
+  "gender": "M",
+  "adress": "11-314"
+};
