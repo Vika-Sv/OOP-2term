@@ -54,7 +54,6 @@ class ConsoleMenu:
             
      def CountStudents(self):
          count = 0
-         
          for s in self.persons:
              if s.Course == 2 and s.Gender.upper() == 'M' and re.match(r"^\d+-\d+$", s.Adress):
                  count += 1
