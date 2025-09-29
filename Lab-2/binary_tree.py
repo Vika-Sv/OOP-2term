@@ -1,5 +1,3 @@
-from my_string import MyString
-
 class Node:
     def __init__(self, data):
         self.data = data
@@ -11,28 +9,25 @@ class BinaryTree:
         self.root = None
 
     def insert(self, data):
-        if self.root == None:
+        if self.root is None:
             self.root = Node(data)
         else:
             self._insert(self.root, data)
 
-    def _insert(self, node, data):
-        if data.value < node.data.value:
-            if node.left == None:
-                node.left = Node(data)
+    def _insert(self, current, data):
+        if str(data) < str(current.data):
+            if current.left is None:
+                current.left = Node(data)
             else:
-                self._insert(node.left, data)
+                self._insert(current.left, data)
         else:
-            if node.right == None:
-                node.right = Node(data)
+            if current.right is None:
+                current.right = Node(data)
             else:
-                self._insert(node.right, data)
+                self._insert(current.right, data)
 
-    def inorder(self, node=None):
-        if node == None:
-            node = self.root
-        if node.left:
+    def inorder(self, node):
+        if node:
             self.inorder(node.left)
-        print(node.data.display())
-        if node.right:
+            print(node.data)
             self.inorder(node.right)
