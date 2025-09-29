@@ -1,6 +1,8 @@
+from my_string import MyString
+
 class Node:
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, data):
+        self.data = data
         self.left = None
         self.right = None
 
@@ -8,52 +10,29 @@ class BinaryTree:
     def __init__(self):
         self.root = None
 
-    def insert(self, value):
-        if self.root is None:
-            self.root = Node(value)
+    def insert(self, data):
+        if self.root == None:
+            self.root = Node(data)
         else:
-            self._insert(self.root, value)
+            self._insert(self.root, data)
 
-    def _insert(self, current, value):
-        if str(value.value) < str(current.value.value):
-            if current.left is None:
-                current.left = Node(value)
+    def _insert(self, node, data):
+        if data.value < node.data.value:
+            if node.left == None:
+                node.left = Node(data)
             else:
-                self._insert(current.left, value)
+                self._insert(node.left, data)
         else:
-            if current.right is None:
-                current.right = Node(value)
+            if node.right == None:
+                node.right = Node(data)
             else:
-                self._insert(current.right, value)
+                self._insert(node.right, data)
 
-    def postorder(self, node=None):
-        if node is None:
+    def inorder(self, node=None):
+        if node == None:
             node = self.root
-        if node is None:
-            return []
-        result = []
         if node.left:
-            result += self.postorder(node.left)
+            self.inorder(node.left)
+        print(node.data.display())
         if node.right:
-            result += self.postorder(node.right)
-        result.append(node.value)
-        return result
-
-def menu_tree():
-    from ryadok import Ryadok
-    tree = BinaryTree()
-    while True:
-        print("\n--- Дерево ---")
-        print("1. Додати рядок")
-        print("2. Postorder")
-        print("0. Вихід")
-        choice = input("Вибір: ")
-
-        if choice == "1":
-            txt = input("Рядок: ")
-            tree.insert(Ryadok(txt))
-        elif choice == "2":
-            for r in tree.postorder():
-                print(r.value)
-        elif choice == "0":
-            break
+            self.inorder(node.right)
