@@ -3,7 +3,6 @@ from collection import collection
 from binary_tree import BinaryTree
 
 if __name__ == "__main__":
-    print("--- Робота з класом MyString ---")
     s = MyString("Hello World")
     print("Рядок:", s)
     print("Пошук 'World':", s.find_substring("World"))

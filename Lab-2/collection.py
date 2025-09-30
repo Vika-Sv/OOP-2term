@@ -20,12 +20,12 @@ def collection():
     print("\n Generic collection")
     my_deque = deque([s1, s2, s3])
     my_deque.append(s4)
-    my_deque.popleft()           # видалення зліва
+    my_deque.popleft()  
     for obj in my_deque:
         print(obj)
 
     print("\n array")
     my_array = array.array('i', [s1.length, s2.length, s3.length])
-    my_array.append(s4.length)   # додавання
-    my_array[0] = 99             # оновлення
+    my_array.append(s4.length)  
+    my_array[0] = 99            
     print("Array:", list(my_array))
