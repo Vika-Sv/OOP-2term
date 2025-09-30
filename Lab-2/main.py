@@ -1,27 +1,28 @@
 from my_string import MyString
-from collection import collection
+from collection_list import collection
+from collection_deque import collection2
+from collection_array import collection3
 from binary_tree import BinaryTree
 
+def main():
+    s1 = MyString("Apple")
+    s2 = MyString("Banana")
+    s3 = MyString("Cherry")
+    s4 = MyString("Pineapple")
+    s5 = MyString("Grape")
+
+    objs = [s1, s2, s3, s4, s5]
+
+
+    collection(objs)
+    collection2(objs)
+    collection3(objs)
+
+
+    print("\n Binary Tree сreated with elements Cherry, Apple, Banana, Grape, Pineapple")
+    bt = BinaryTree()
+    for obj in [s3, s1, s2, s5, s4]:  
+        bt.insert(obj)
+
 if __name__ == "__main__":
-    s = MyString("Hello World")
-    print("Рядок:", s)
-    print("Пошук 'World':", s.find_substring("World"))
-    s.insert_substring(" Python", 5)
-    print("Після вставки:", s)
-    s.replace_substring("World", "Everyone")
-    print("Після заміни:", s)
-
-    
-    collection()
-
-
-    print("\n Binary Tree")
-    tree = BinaryTree()
-    tree.insert("Banana")
-    tree.insert("Peach")
-    tree.insert("Strowberry")
-    tree.insert("Grape")
-    tree.insert("Apple")
-
-    print("inorder:")
-    tree.inorder(tree.root)
+    main()
