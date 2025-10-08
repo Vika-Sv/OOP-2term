@@ -1,0 +1,45 @@
+Student ValeriaSviastyn 
+{
+"Firstname": "Valeria",
+"Lastname": "Sviastyn ",
+"StudentId": "BB №66666666",
+"Course": "4",
+"Gender": "F ",
+"Adress": "Bogolybova 45"
+};
+Student Viktoria Sviastyn 
+{
+"Firstname": "Viktoria ",
+"Lastname": "Sviastyn ",
+"StudentId": "KB №67888890",
+"Course": "2",
+"Gender": "F ",
+"Adress": "11-511a"
+};
+Student Michael Sviastyn 
+{
+"Firstname": "Michael ",
+"Lastname": "Sviastyn ",
+"StudentId": "HH №77890000",
+"Course": "2",
+"Gender": "M",
+"Adress": "3-315"
+};
+Student Valeriy Gorunov
+{
+"Firstname": "Valeriy ",
+"Lastname": "Gorunov",
+"StudentId": "KK №45678345",
+"Course": "2",
+"Gender": "M",
+"Adress": "9-210"
+};
+Student Michael Sviastyn 
+{
+"Firstname": "Michael ",
+"Lastname": "Sviastyn ",
+"StudentId": "LL №56789045",
+"Course": "2",
+"Gender": "M ",
+"Adress": "4-511"
+};
