@@ -1,29 +1,31 @@
-from my_string import MyString
+from typing import TypeVar, Generic, Optional
 
-class Node:
-    def __init__(self, data: MyString):
-        self.data = data
-        self.left = None
-        self.right = None
+T = TypeVar('T')
 
-class BinaryTree:
+class Node(Generic[T]):
+    def __init__(self, value: T):
+        self.value: T = value
+        self.left: Optional['Node[T]'] = None
+        self.right: Optional['Node[T]'] = None
+
+class BinaryTree(Generic[T]):
     def __init__(self):
-        self.root = None
+        self.root: Optional[Node[T]] = None
 
-    def insert(self, data: MyString):
+    def insert(self, value: T):
         if self.root is None:
-            self.root = Node(data)
+            self.root = Node(value)
         else:
-            self._insert(self.root, data)
+            self._insert(self.root, value)
 
-    def _insert(self, node, data: MyString):
-        if data.value < node.data.value:
+    def _insert(self, node: Node[T], value: T):
+        if value < node.value:
             if node.left is None:
-                node.left = Node(data)
+                node.left = Node(value)
             else:
-                self._insert(node.left, data)
+                self._insert(node.left, value)
         else:
             if node.right is None:
-                node.right = Node(data)
+                node.right = Node(value)
             else:
-                self._insert(node.right, data)
+                self._insert(node.right, value)

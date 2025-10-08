@@ -8,8 +8,7 @@ def collection3(objects: list[MyString]):
     arr.append(10)
     arr.pop(2)
     arr[0] = 99
-    print("Is there 99 in array?", 99 in arr)
+    print('Is there 99 in array?', 99 in arr)
 
-    # Вивід
     for a in arr:
         print(a)
