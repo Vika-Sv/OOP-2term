@@ -1,7 +1,7 @@
 import json
 import pickle
 import xml.etree.ElementTree as ET
-from string_class import MyString
+from my_string import MyString
 
 
 def save_json(filename, objects):
@@ -55,3 +55,13 @@ def load_custom(filename):
             value, length = line.strip().split("|")
             objects.append(MyString(value))
     return objects
+
+
+def save_list(filename, coll):
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump([s.value for s in coll], f, ensure_ascii=False, indent=4)
+
+def load_list(filename):
+    with open(filename, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return [MyString(val) for val in data]

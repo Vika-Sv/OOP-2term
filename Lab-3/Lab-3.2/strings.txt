@@ -1,0 +1,5 @@
+Apple|5
+Banana|6
+Cherry|6
+Pineapple|9
+Grape|5

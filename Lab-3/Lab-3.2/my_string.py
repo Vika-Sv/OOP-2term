@@ -25,7 +25,6 @@ class MyString:
     def to_dict(self):
         return {"value": self.value, "length": self.length}
 
-
     @staticmethod
     def from_dict(data: dict):
         return MyString(data["value"])

@@ -1,0 +1,22 @@
+[
+    {
+        "value": "Apple",
+        "length": 5
+    },
+    {
+        "value": "Banana",
+        "length": 6
+    },
+    {
+        "value": "Cherry",
+        "length": 6
+    },
+    {
+        "value": "Pineapple",
+        "length": 9
+    },
+    {
+        "value": "Grape",
+        "length": 5
+    }
+]
