@@ -1,28 +1,52 @@
-from my_string import MyString
-from collection_list import collection
-from collection_deque import collection2
-from collection_array import collection3
-from binary_tree import BinaryTree
+from string_class import MyString
+import serialization_collections as sc
 
-def main():
-    s1 = MyString("Apple")
-    s2 = MyString("Banana")
-    s3 = MyString("Cherry")
-    s4 = MyString("Pineapple")
-    s5 = MyString("Grape")
-
-    objs = [s1, s2, s3, s4, s5]
-
-
-    collection(objs)
-    collection2(objs)
-    collection3(objs)
-
-
-    print("\n Binary Tree сreated with elements Cherry, Apple, Banana, Grape, Pineapple")
-    bt = BinaryTree()
-    for obj in [s3, s1, s2, s5, s4]:  
-        bt.insert(obj)
-
+    
 if __name__ == "__main__":
-    main()
+    arr = [
+        MyString("Apple"),
+        MyString("Banana"),
+        MyString("Cherry"),
+        MyString("Pineapple"),
+        MyString("Grape")
+ ]
+
+    print("=== Початковий масив ===")
+    for obj in arr:
+        print(obj)
+
+    # 2. JSON серіалізація
+    sc.save_json("strings.json", arr)
+    restored_json = sc.load_json("strings.json")
+    print("\n=== JSON десеріалізація ===")
+    for obj in restored_json:
+        print(obj)
+
+    # 3. Binary серіалізація
+    sc.save_binary("strings.bin", arr)
+    restored_bin = sc.load_binary("strings.bin")
+    print("\n=== Binary десеріалізація ===")
+    for obj in restored_bin:
+        print(obj)
+
+    # 4. XML серіалізація
+    sc.save_xml("strings.xml", arr)
+    restored_xml = sc.load_xml("strings.xml")
+    print("\n=== XML десеріалізація ===")
+    for obj in restored_xml:
+        print(obj)
+
+    # 5. Custom серіалізація
+    sc.save_custom("strings.txt", arr)
+    restored_custom = sc.load_custom("strings.txt")
+    print("\n=== Custom десеріалізація ===")
+    for obj in restored_custom:
+        print(obj)
+
+    # 6. Порівняння масиву і колекції (списку Python)
+    print("\n=== Колекція (list) ===")
+    collection = [MyString("Колекція1"), MyString("Колекція2")]
+    sc.save_json("collection.json", collection)
+    restored_col = sc.load_json("collection.json")
+    for obj in restored_col:
+        print(obj)

@@ -1,3 +1,4 @@
+
 class MyString:
     def __init__(self, value: str):
         self.value = value
@@ -20,3 +21,11 @@ class MyString:
 
     def __str__(self):
         return self.value
+
+    def to_dict(self):
+        return {"value": self.value, "length": self.length}
+
+
+    @staticmethod
+    def from_dict(data: dict):
+        return MyString(data["value"])
