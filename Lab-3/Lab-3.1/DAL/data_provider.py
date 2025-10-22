@@ -21,7 +21,7 @@ class JSONProvider:
 
             students = []
             for obj in data:
-                cls_name = obj.pop("__class__", "Student")
+                cls_name = obj.pop("Student")
                 if cls_name == "Seller":
                     students.append(Seller(**obj))
                 elif cls_name == "Gardener":
