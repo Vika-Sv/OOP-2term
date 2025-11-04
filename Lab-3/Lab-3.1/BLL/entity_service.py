@@ -1,20 +1,28 @@
-from BLL.exceptions import StudentException
+from BLL.exceptions import StudentNotFoundException
 
 class EntityService:
     def __init__(self, context):
         self.context = context
+        self.students = context.load()
 
     def add_student(self, student):
-        students = self.context.load()
-        students.append(student)
-        self.context.save(students)
+        self.students.append(student)
 
-    def get_all(self):
-        return self.context.load()
+    def get_all_students(self):
+        return self.students
 
     def count_male_third_course_in_dorm(self):
-        students = self.context.load()
-        count = sum(1 for s in students if s.course == 3 and s.gender == "M" and s.dorm is not None)
-        if count == 0:
-            raise StudentException('This student don\'t exist')
+        count = 0
+        for s in self.students:
+            if s.Course == 3 and s.Gender.upper() == 'M' and '-' in s.Adress:
+                count += 1
         return count
+
+    def save(self):
+        self.context.save(self.students)
+
+    def find_student(self, student_id):
+        for s in self.students:
+            if s.StudentID == student_id:
+                return s
+        raise StudentNotFoundException(f'Student with ID {student_id} not found')
