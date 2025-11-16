@@ -88,9 +88,7 @@ class Menu:
         sid = input("ID студента: ")
         print(self.student_service.get_by_id(sid))
 
-    # ============================
-    #        2. ГРУПИ
-    # ============================
+   
     def menu_group(self):
         print("\n--- Групи ---")
         print("2.1 Додати групу")
@@ -154,7 +152,7 @@ class Menu:
         full_group_text = input("Введіть повний запис групи (наприклад Б-121-24-1-ПІ): ")
         sid = input("ID студента: ")
 
-    # шукаємо групу по повному тексту
+    
         target_group = None
         for g in self.group_service.groups.get_all():
             if str(g) == full_group_text:
@@ -165,7 +163,7 @@ class Menu:
             print("Групу не знайдено!")
             return
 
-    # додаємо студента
+   
         self.group_service.add_student_to_group(target_group, sid)
         print('Student was added to the group')
 
@@ -175,9 +173,7 @@ class Menu:
         self.group_service.remove_student_from_group(course, sid)
         print('Student was deleted from the group')
 
-    # ============================
-    #        3. ГУРТОЖИТОК
-    # ============================
+    
     def menu_dorm(self):
         print("\n--- Гуртожиток ---")
         print("3.1 Додати кімнату")
@@ -250,12 +246,7 @@ class Menu:
         for r in all_dr:
             print(r)
 
-    # ============================
-    #        4. ПОШУК
-    # ============================
-       # ============================
-    #        4. ПОШУК
-    # ============================
+ 
     def menu_search(self):
         print("\n--- Пошук ---")
         print("4.1 Студент за імʼям та прізвищем")
@@ -272,9 +263,7 @@ class Menu:
         elif c == "3": 
             self.search_dorm_students()
 
-    # --------------------------
-    # 4.1 ПОШУК СТУДЕНТА ПО ІМЕНІ
-    # --------------------------
+   
     def search_by_name(self):
         name = input("Імʼя: ")
         surname = input("Прізвище: ")
@@ -288,13 +277,11 @@ class Menu:
         for st in results:
             print(st)
 
-    # --------------------------
-    # 4.2 ПОШУК СТУДЕНТІВ ГРУПИ
-    # --------------------------
+    
     def search_group_students(self):
         full_group_text = input("Введіть повний формат групи: ")
 
-    # 1. Знайти групу за повним текстом
+
         group_obj = self.group_service.groups.find(
         lambda g: str(g) == full_group_text
         )
@@ -303,7 +290,6 @@ class Menu:
             print("Групу не знайдено!")
             return
 
-    # 2. Знайти всіх студентів, чиї ID є у списку group_obj.students
         students = self.student_service.students.find_all(
         lambda s: s.student_id in group_obj.students
         )
@@ -312,13 +298,10 @@ class Menu:
             print("У цій групі немає студентів.")
             return
 
-    # 3. Вивести студентів
         for st in students:
             print(st)
 
-    # --------------------------
-    # 4.3 ПОШУК СТУДЕНТІВ В ГУРТОЖИТКУ
-    # --------------------------
+   
     def search_dorm_students(self):
         rooms = self.dorm_service.get_all_rooms()
 

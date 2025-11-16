@@ -19,5 +19,12 @@
         "student_id": "AA 456789",
         "gender": "F",
         "address": ""
+    },
+    {
+        "name": "Єгор",
+        "surname": "Безушко",
+        "student_id": "AA 123456",
+        "gender": "M",
+        "address": "Kyiv"
     }
 ]

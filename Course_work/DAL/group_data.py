@@ -25,7 +25,6 @@ class GroupData:
                 educational_program=d["educational_program"]
             )
 
-            # Відновлення студентів групи
             for st_id in d.get("students", []):
                 g.add_student(st_id)
 

@@ -47,6 +47,25 @@ class DormRoom:
 
     def free_spaces(self):
         return self._max_capacity - len(self._students)
+    
+    def to_dict(self) -> dict:
+        return {
+            "dorm_number": self.dorm_number,
+            "room_number": self.room_number,
+            "max_capacity": self.max_capacity,
+            "students": list(self.students),
+        }
+
+    @staticmethod
+    def from_dict(d: dict) -> "DormRoom":
+        room = DormRoom(
+            dorm_number=d["dorm_number"],
+            room_number=d["room_number"],
+            max_capacity=d["max_capacity"],
+        )
+        for sid in d.get("students", []):
+            room.add_student(sid)
+        return room
 
     def __str__(self):
         return f"Кімната {self._room_number}: {len(self._students)}/{self._max_capacity} мешканців"

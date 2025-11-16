@@ -13,9 +13,7 @@ class DormService:
             raise NotFoundError("Кімнату не знайдено.")
         return room
 
-    # --------------------------
-    # ДОДАТИ КІМНАТУ
-    # --------------------------
+    
     def add_room(self, dorm_number, room_number, max_capacity):
         exists = self.dorm.find(lambda r: r.dorm_number == dorm_number and r.room_number == room_number)
         if exists:
@@ -25,9 +23,7 @@ class DormService:
         self.dorm.add(room)
         return room
 
-    # --------------------------
-    # ОНОВИТИ КІМНАТУ
-    # --------------------------
+    
     def update_room(self, dorm_number, room_number, new_capacity=None):
         room = self.get_by_number(dorm_number, room_number)
 
@@ -38,9 +34,7 @@ class DormService:
 
         return room
 
-    # --------------------------
-    # ПОСЕЛИТИ СТУДЕНТА
-    # --------------------------
+    
     def check_in(self, dorm_number, room_number, student_id):
         room = self.get_by_number(dorm_number, room_number)
 
@@ -50,9 +44,7 @@ class DormService:
         room.add_student(student_id)
         return room
 
-    # --------------------------
-    # ВИПИСАТИ СТУДЕНТА
-    # --------------------------
+    
     def check_out(self, dorm_number, room_number, student_id):
         room = self.get_by_number(dorm_number, room_number)
 
@@ -62,15 +54,11 @@ class DormService:
         room.remove_student(student_id)
         return room
 
-    # --------------------------
-    # СПИСОК КІМНАТ
-    # --------------------------
+    
     def get_all_rooms(self):
         return self.dorm.get_all()
 
-    # --------------------------
-    # ВІЛЬНІ МІСЦЯ
-    # --------------------------
+    
     def free_spaces(self, dorm_number, room_number):
         room = self.get_by_number(dorm_number, room_number)
         return room.free_spaces()

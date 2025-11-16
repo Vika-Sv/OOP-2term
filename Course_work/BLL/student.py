@@ -35,6 +35,25 @@ class Student(Person):
         self._address = value
 
 
+    def to_dict(self) -> dict:
+        return {
+            "name": self.name,
+            "surname": self.surname,
+            "student_id": self.student_id,
+            "gender": self.gender,
+            "address": self.address,
+        }
+
+    @staticmethod
+    def from_dict(d: dict) -> "Student":
+        return Student(
+            name=d["name"],
+            surname=d["surname"],
+            student_id=d["student_id"],
+            gender=d["gender"],
+            address=d.get("address", ""),
+        )
+
     def __str__(self):
         address = self._address if self._address else 'no address'
         return f'{self.name} {self.surname} ({self._student_id}), {self._gender}, {address}'
