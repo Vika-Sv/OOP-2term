@@ -1,0 +1,30 @@
+[
+    {
+        "degree": "Б",
+        "major": "121",
+        "year": "24",
+        "course": "2",
+        "educational_program": "ПІ",
+        "students": [
+            "AA 12345678"
+        ]
+    },
+    {
+        "degree": "<",
+        "major": "",
+        "year": "",
+        "course": "",
+        "educational_program": "",
+        "students": []
+    },
+    {
+        "degree": "Б",
+        "major": "123",
+        "year": "25",
+        "course": "1",
+        "educational_program": "ПІ",
+        "students": [
+            "AA 23456789"
+        ]
+    }
+]

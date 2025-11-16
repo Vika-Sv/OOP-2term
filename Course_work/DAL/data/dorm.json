@@ -1,0 +1,16 @@
+[
+    {
+        "dorm_number": "11",
+        "room_number": "311",
+        "max_capacity": 4,
+        "students": []
+    },
+    {
+        "dorm_number": "12",
+        "room_number": "1488",
+        "max_capacity": 4,
+        "students": [
+            "AA 23456789"
+        ]
+    }
+]

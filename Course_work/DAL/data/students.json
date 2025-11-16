@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Вікторія ",
+        "surname": "Свястин ",
+        "student_id": "AA 12345678",
+        "gender": "F",
+        "address": ""
+    },
+    {
+        "name": "Валерія ",
+        "surname": "Свястин ",
+        "student_id": "AA 23456789",
+        "gender": "F",
+        "address": ""
+    },
+    {
+        "name": "Валерія",
+        "surname": "Лущан",
+        "student_id": "AA 456789",
+        "gender": "F",
+        "address": ""
+    }
+]

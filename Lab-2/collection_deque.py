@@ -11,7 +11,7 @@ def collection2(objects: list[MyString]):
     d.popleft()
 
     if any(s.value == 'Apple' for s in d):
-        print('The element 'Apple' is found')
+        print('The element ''Apple'' is found')
     else:
         print('No such element')
 
