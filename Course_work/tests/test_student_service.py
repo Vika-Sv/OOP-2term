@@ -1,6 +1,6 @@
 import pytest
 from BLL.student_service import StudentService
-from BLL.student import Student
+from DAL.enteties.student import Student
 from BLL.exceptions import ValidationError, NotFoundError
 
 

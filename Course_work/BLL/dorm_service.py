@@ -1,5 +1,5 @@
 from BLL.exceptions import NotFoundError, ValidationError, CapacityError
-from BLL.dorm import DormRoom
+from DAL.enteties.dorm import DormRoom
 from BLL.generic_collection import Collection
 
 

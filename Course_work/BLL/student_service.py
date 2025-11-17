@@ -1,5 +1,5 @@
 from BLL.exceptions import NotFoundError, ValidationError
-from BLL.student import Student
+from DAL.enteties.student import Student
 from BLL.generic_collection import Collection
 
 

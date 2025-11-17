@@ -1,4 +1,4 @@
-from BLL.person import Person
+from DAL.enteties.person import Person
 
 class Student(Person):
     def __init__(self, name, surname, student_id, gender, address=None):

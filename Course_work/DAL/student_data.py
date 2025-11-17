@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from BLL.student import Student
+from DAL.enteties.student import Student
 
 class StudentData:
     def __init__(self, filename='DAL/data/students.json'):

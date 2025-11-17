@@ -1,5 +1,5 @@
 from BLL.exceptions import NotFoundError, ValidationError
-from BLL.group import Group
+from DAL.enteties.group import Group
 from BLL.generic_collection import Generic
 
 class GroupService:

@@ -1,6 +1,6 @@
 import pytest
 from BLL.group_service import GroupService
-from BLL.group import Group
+from DAL.enteties.group import Group
 from BLL.exceptions import ValidationError, NotFoundError
 from BLL.generic_collection import Collection
 

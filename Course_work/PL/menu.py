@@ -1,3 +1,10 @@
+from BLL.exceptions import ValidationError, NotFoundError, CapacityError
+from BLL.student_service import StudentService
+from BLL.group_service import GroupService
+from BLL.dorm_service import DormService
+
+
+
 class Menu:
     def __init__(self, student_service, group_service, dorm_service):
         self.student_service = student_service
@@ -48,12 +55,12 @@ class Menu:
         gender = input('Стать (M/F): ')
         address = input('Адреса: ')
         self.student_service.add_student(name, surname, sid, gender, address)
-        print('Student was added')
+        print('Студнт був доданий')
 
     def delete_student(self):
         sid = input('ID студента: ')
         self.student_service.delete_student(sid)
-        print('Student was deleted')
+        print('Студнт був видалний')
 
     def update_student(self):
         sid = input('ID студента: ')
@@ -71,13 +78,13 @@ class Menu:
             address or None,
             group_id or None
         )
-        print('Student was updated')
+        print('Студента була оновлено')
 
     def show_all_students(self):
         all_st = self.student_service.students.get_all()
 
         if not all_st:
-            print('List is empty')
+            print('Студентів поки немає')
             return
 
         for s in all_st:
@@ -117,35 +124,35 @@ class Menu:
         course = input('Курс: ')
         ep = input('Освітня програма: ')
         self.group_service.add_group(degree, major, year, course, ep)
-        print('Group was added')
+        print('Грпу було створено')
 
     def delete_group(self):
-        course = input('Group Number: ')
+        course = input('Номер групи: ')
         self.group_service.delete_group(course)
-        print('Group was deleted')
+        print('Групу було видалено')
 
     def update_group(self):
-        course = input('Group Number: ')
+        course = input('Номер групи: ')
         degree = input('Новий ступінь: ')
         major = input('Нова спеціальність: ')
         year = input('Новий курс: ')
         ep = input('Освітня програма: ')
         self.group_service.update_group(course, degree or None, major or None, year or None, ep or None)
-        print('Group was updated')
+        print('Групу було оновлено')
 
     def show_all_groups(self):
         all_gr = self.group_service.groups.get_all()
 
         if not all_gr:
-            print('List is empty')
+            print('Група порожня')
             return
         
         for i in all_gr:
             print(i)
 
     def show_one_group(self):
-        gmaj = input('Major of group: ')
-        gyear = input('Year of admission: ')
+        gmaj = input('Спеціальність: ')
+        gyear = input('Рік вступу: ')
         print(self.group_service.get_group(gmaj, gyear))
 
     def add_student_to_group(self):
@@ -165,13 +172,13 @@ class Menu:
 
    
         self.group_service.add_student_to_group(target_group, sid)
-        print('Student was added to the group')
+        print('Студента було додано до групи')
 
     def remove_student_from_group(self):
         course = input('ID групи: ')
         sid = input('ID студента: ')
         self.group_service.remove_student_from_group(course, sid)
-        print('Student was deleted from the group')
+        print('Студент був видалений з групи')
 
     
     def menu_dorm(self):
@@ -210,7 +217,7 @@ class Menu:
         room = input('Номер кімнати: ')
         cap = input('Нова місткість: ')
         self.dorm_service.update_room(num, int(cap) if cap else None)
-        print('Room was updated')
+        print('Кімната була оновлена')
 
     def check_in(self):
         dorm = input('Номер гуртожитку: ')
@@ -240,7 +247,7 @@ class Menu:
         all_dr = self.dorm_service.get_all_rooms()
 
         if not all_dr:
-            print('No one lives here')
+            print('Ніхто поки що не живе тут')
             return
         
         for r in all_dr:

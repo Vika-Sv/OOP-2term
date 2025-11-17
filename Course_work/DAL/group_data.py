@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from BLL.group import Group
+from DAL.enteties.group import Group
 
 class GroupData:
     def __init__(self, filename='DAL/data/groups.json'):

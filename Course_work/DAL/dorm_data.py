@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from BLL.dorm import DormRoom
+from DAL.enteties.dorm import DormRoom
 
 class DormData:
     def __init__(self, filename='DAL/data/dorm.json'):

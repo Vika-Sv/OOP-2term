@@ -1,6 +1,6 @@
 import pytest
 from BLL.dorm_service import DormService
-from BLL.dorm import DormRoom
+from DAL.enteties.dorm import DormRoom
 from BLL.exceptions import ValidationError, NotFoundError, CapacityError
 
 
