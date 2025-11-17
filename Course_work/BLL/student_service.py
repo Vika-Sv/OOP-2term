@@ -9,7 +9,7 @@ class StudentService:
 
     def add_student(self, name, surname, student_id, gender, address=None):
         if gender not in ('M', 'F'):
-            raise ValidationError('Стать повинна бути 'M' або 'F'.')
+            raise ValidationError('Стать повинна бути ''M'' або 'F'.')
 
         if self.students.find(lambda s: s.student_id == student_id):
             raise ValidationError('Студент з таким ID вже існує.')
@@ -37,7 +37,7 @@ class StudentService:
         gender = gender.strip().upper()
         if gender:
             if gender not in ('M', 'F'):
-                raise ValidationError('Стать повинна бути 'M' або 'F'.')
+                raise ValidationError('Стать повинна бути ''M'' або 'F'.')
             st.gender = gender
 
         if address:
