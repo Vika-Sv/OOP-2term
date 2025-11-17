@@ -68,7 +68,6 @@ class Menu:
         surname = input('Нове прізвище: ')
         gender = input('Стать (M/F): ')
         address = input('Адреса: ')
-        group_id = input('ID групи: ')
 
         self.student_service.update_student(
             sid,
@@ -76,7 +75,6 @@ class Menu:
             surname or None,
             gender or None,
             address or None,
-            group_id or None
         )
         print('Студента була оновлено')
 
