@@ -44,5 +44,5 @@ def main():
     dorm_data.save_all(dorm.get_all())
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

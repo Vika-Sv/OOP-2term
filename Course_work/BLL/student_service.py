@@ -8,11 +8,11 @@ class StudentService:
         self.students = students
 
     def add_student(self, name, surname, student_id, gender, address=None):
-        if gender not in ("M", "F"):
-            raise ValidationError("Стать повинна бути 'M' або 'F'.")
+        if gender not in ('M', 'F'):
+            raise ValidationError('Стать повинна бути 'M' або 'F'.')
 
         if self.students.find(lambda s: s.student_id == student_id):
-            raise ValidationError("Студент з таким ID вже існує.")
+            raise ValidationError('Студент з таким ID вже існує.')
 
         st = Student(name, surname, student_id, gender, address)
         self.students.add(st)
@@ -20,14 +20,14 @@ class StudentService:
 
     def delete_student(self, student_id):
         if not self.students.find(lambda s: s.student_id == student_id):
-            raise NotFoundError("Студент не знайдений.")
+            raise NotFoundError('Студент не знайдений.')
 
         self.students.remove(lambda s: s.student_id == student_id)
 
     def update_student(self, student_id, name=None, surname=None, gender=None, address=None):
         st = self.students.find(lambda s: s.student_id == student_id)
         if not st:
-            raise NotFoundError("Студента не знайдено.")
+            raise NotFoundError('Студента не знайдено.')
 
         if name:
             st.name = name
@@ -36,8 +36,8 @@ class StudentService:
 
         gender = gender.strip().upper()
         if gender:
-            if gender not in ("M", "F"):
-                raise ValidationError("Стать повинна бути 'M' або 'F'.")
+            if gender not in ('M', 'F'):
+                raise ValidationError('Стать повинна бути 'M' або 'F'.')
             st.gender = gender
 
         if address:
@@ -48,7 +48,7 @@ class StudentService:
     def get_by_id(self, student_id):
         st = self.students.find(lambda s: s.student_id == student_id)
         if not st:
-            raise NotFoundError("Студента не знайдено.")
+            raise NotFoundError('Студента не знайдено.')
         return st
 
     def get_all(self):
@@ -61,7 +61,7 @@ class StudentService:
                 res.append(st)
 
         if not res:
-            raise NotFoundError("Студентів з такими даними не знайдено.")
+            raise NotFoundError('Студентів з такими даними не знайдено.')
         return res
 
 

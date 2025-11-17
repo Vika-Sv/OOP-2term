@@ -10,14 +10,14 @@ class DormService:
     def get_by_number(self, dorm_number, room_number):
         room = self.dorm.find(lambda r: r.dorm_number == dorm_number and r.room_number == room_number)
         if not room:
-            raise NotFoundError("Кімнату не знайдено.")
+            raise NotFoundError('Кімнату не знайдено.')
         return room
 
     
     def add_room(self, dorm_number, room_number, max_capacity):
         exists = self.dorm.find(lambda r: r.dorm_number == dorm_number and r.room_number == room_number)
         if exists:
-            raise ValidationError("Така кімната вже існує.")
+            raise ValidationError('Така кімната вже існує.')
 
         room = DormRoom(dorm_number, room_number, max_capacity)
         self.dorm.add(room)
@@ -29,7 +29,7 @@ class DormService:
 
         if new_capacity is not None:
             if new_capacity < len(room.students):
-                raise CapacityError("Нова місткість менша за кількість студентів.")
+                raise CapacityError('Нова місткість менша за кількість студентів.')
             room.max_capacity = new_capacity
 
         return room
@@ -39,7 +39,7 @@ class DormService:
         room = self.get_by_number(dorm_number, room_number)
 
         if len(room.students) >= room.max_capacity:
-            raise CapacityError("У кімнаті немає місць.")
+            raise CapacityError('У кімнаті немає місць.')
 
         room.add_student(student_id)
         return room
@@ -49,7 +49,7 @@ class DormService:
         room = self.get_by_number(dorm_number, room_number)
 
         if student_id not in room.students:
-            raise NotFoundError("Цей студент не проживає в цій кімнаті.")
+            raise NotFoundError('Цей студент не проживає в цій кімнаті.')
 
         room.remove_student(student_id)
         return room

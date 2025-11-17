@@ -44,26 +44,26 @@ class Group:
             
     def to_dict(self) -> dict:
         return {
-            "degree": self.degree,
-            "major": self.major,
-            "year": self.year,
-            "course": self.course,
-            "educational_program": self.educational_program,
-            "students": list(self.students),
+            'degree': self.degree,
+            'major': self.major,
+            'year': self.year,
+            'course': self.course,
+            'educational_program': self.educational_program,
+            'students': list(self.students),
         }
 
     @staticmethod
-    def from_dict(d: dict) -> "Group":
+    def from_dict(d: dict) -> 'Group':
         g = Group(
-            degree=d["degree"],
-            major=d["major"],
-            year=d["year"],
-            course=d["course"],
-            educational_program=d["educational_program"],
+            degree=d['degree'],
+            major=d['major'],
+            year=d['year'],
+            course=d['course'],
+            educational_program=d['educational_program'],
         )
-        for sid in d.get("students", []):
+        for sid in d.get('students', []):
             g.add_student(sid)
         return g        
 
     def __str__(self):
-        return f"{self._degree}-{self._major}-{self._year}-{self._course}-{self._educational_program}"
+        return f'{self._degree}-{self._major}-{self._year}-{self._course}-{self._educational_program}'

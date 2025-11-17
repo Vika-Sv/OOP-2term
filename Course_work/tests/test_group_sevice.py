@@ -12,107 +12,107 @@ def service():
 
 
 def test_add_group_success(service):
-    group = service.add_group("Bachelor", "IPZ", 2024, "B-121", "SE")
+    group = service.add_group('Bachelor', 'IPZ', 2024, 'B-121', 'SE')
 
-    assert group.course == "B-121"
-    assert group.major == "IPZ"
+    assert group.course == 'B-121'
+    assert group.major == 'IPZ'
     assert group.year == 2024
 
 
 def test_add_group_duplicate(service):
-    service.add_group("Bachelor", "IPZ", 2024, "B-122", "SE")
+    service.add_group('Bachelor', 'IPZ', 2024, 'B-122', 'SE')
 
     with pytest.raises(ValidationError):
-        service.add_group("Bachelor", "IPZ", 2024, "B-122", "SE")
+        service.add_group('Bachelor', 'IPZ', 2024, 'B-122', 'SE')
 
 
 def test_remove_group_success(service):
-    service.add_group("Bachelor", "IPZ", 2024, "B-123", "SE")
+    service.add_group('Bachelor', 'IPZ', 2024, 'B-123', 'SE')
 
-    service.delete_group("B-123")
+    service.delete_group('B-123')
 
     assert service.groups.get_all() == []
 
 
 def test_remove_group_not_found(service):
     with pytest.raises(NotFoundError):
-        service.delete_group("NOPE")
+        service.delete_group('NOPE')
 
 
 def test_update_group_success(service):
-    service.add_group("Bachelor", "IPZ", 2024, "B-124", "SE")
+    service.add_group('Bachelor', 'IPZ', 2024, 'B-124', 'SE')
     
-    updated = service.update_group("B-124", major="CS")
+    updated = service.update_group('B-124', major='CS')
 
-    assert updated.major == "CS"
+    assert updated.major == 'CS'
 
 
 def test_update_group_not_found(service):
     with pytest.raises(NotFoundError):
-        service.update_group("NOPE", major="CS")
+        service.update_group('NOPE', major='CS')
 
 
 def test_get_all_groups(service):
-    service.add_group("B", "IPZ", 1, "B-125", "SE")
+    service.add_group('B', 'IPZ', 1, 'B-125', 'SE')
     
     res = service.get_all()
 
     assert len(res) == 1
-    assert res[0].course == "B-125"
+    assert res[0].course == 'B-125'
 
 
 def test_get_group_by_id_success(service):
-    service.add_group("B", "IPZ", 1, "B-127", "SE")
+    service.add_group('B', 'IPZ', 1, 'B-127', 'SE')
 
-    g = service.get_by_id("B-127")
+    g = service.get_by_id('B-127')
 
-    assert g.course == "B-127"
+    assert g.course == 'B-127'
 
 
 def test_get_group_by_id_not_found(service):
     with pytest.raises(NotFoundError):
-        service.get_by_id("NOPE")
+        service.get_by_id('NOPE')
 
 
 def test_add_student_to_group(service):
-    service.add_group("B", "IPZ", 1, "B-128", "SE")
-    group = service.get_by_id("B-128")
+    service.add_group('B', 'IPZ', 1, 'B-128', 'SE')
+    group = service.get_by_id('B-128')
     
-    service.add_student_to_group(group, "AA001")
+    service.add_student_to_group(group, 'AA001')
 
-    assert "AA001" in group.students
+    assert 'AA001' in group.students
 
 
 def test_add_student_to_group_not_found(service):
     with pytest.raises(NotFoundError):
-        service.add_student_to_group("NOPE", "AA001")
+        service.add_student_to_group('NOPE', 'AA001')
 
 
 def test_remove_student_from_group(service):
-    service.add_group("B", "IPZ", 1, "B-129", "SE")
-    group = service.get_by_id("B-129")
-    group.students.append("AA002")
+    service.add_group('B', 'IPZ', 1, 'B-129', 'SE')
+    group = service.get_by_id('B-129')
+    group.students.append('AA002')
 
-    service.remove_student_from_group("B-129", "AA002")
+    service.remove_student_from_group('B-129', 'AA002')
 
-    assert "AA002" not in group.students
+    assert 'AA002' not in group.students
 
 
 def test_remove_student_from_group_not_found(service):
     with pytest.raises(NotFoundError):
-        service.remove_student_from_group("NOPE", "AA001")
+        service.remove_student_from_group('NOPE', 'AA001')
 
 
 
 def test_update_group_nothing_changes(service):
-    g = service.add_group("B", "IPZ", 2024, "B-130", "SE")
+    g = service.add_group('B', 'IPZ', 2024, 'B-130', 'SE')
 
-    updated = service.update_group("B-130")
+    updated = service.update_group('B-130')
 
-    assert updated.degree == "B"
-    assert updated.major == "IPZ"
+    assert updated.degree == 'B'
+    assert updated.major == 'IPZ'
     assert updated.year == 2024
-    assert updated.educational_program == "SE"
+    assert updated.educational_program == 'SE'
 
 
 def test_get_all_groups_empty(service):
@@ -122,9 +122,9 @@ def test_get_all_groups_empty(service):
 
 
 def test_group_str_representation(service):
-    g = service.add_group("B", "IPZ", 2024, "B-131", "SE")
+    g = service.add_group('B', 'IPZ', 2024, 'B-131', 'SE')
 
     text = str(g)
 
-    assert "B-131" in text
-    assert "IPZ" in text
+    assert 'B-131' in text
+    assert 'IPZ' in text
