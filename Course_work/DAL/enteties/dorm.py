@@ -68,4 +68,4 @@ class DormRoom:
         return room
 
     def __str__(self):
-        return f'Кімната {self._room_number}: {len(self._students)}/{self._max_capacity} мешканців'
+        return f'{self._dorm_number}-{self._room_number}'

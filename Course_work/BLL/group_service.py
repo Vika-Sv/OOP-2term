@@ -7,29 +7,32 @@ class GroupService:
         self.groups = groups
 
     def add_group(self, degree, major, year, course, educational_program):
-        if self.groups.find(lambda g: g.course == course):
-            raise ValidationError('Група вже існує.')
+        full_id = f'{degree}-{major}-{year}-{course}-{educational_program}'
+
+        if self.groups.find(lambda g: str(g) == full_id):
+            raise ValidationError("Група вже існує.")
 
         g = Group(degree, major, year, course, educational_program)
         self.groups.add(g)
         return g
 
-   
-    def delete_group(self, course):
-        g = self.groups.find(lambda x: x.course == course)
+    def delete_group(self, full_group_text: str):
+        g = self.groups.find(lambda x: str(x) == full_group_text)
         if not g:
-            raise NotFoundError('Групу не знайдено.')
+            raise NotFoundError("Групу не знайдено.")
         self.groups.remove(g)
 
    
-    def update_group(self, course, degree=None, major=None, year=None, educational_program=None):
-        g = self.groups.find(lambda x: x.course == course)
+    def update_group(self, full_id, degree=None, major=None, year=None, course = None, educational_program=None):
+        
+        g = self.groups.find(lambda x: str(x) == full_id)
         if not g:
             raise NotFoundError('Групу не знайдено.')
 
         if degree: g.degree = degree
         if major: g.major = major
         if year: g.year = year
+        if course: g.course = course
         if educational_program: g.educational_program = educational_program
 
         return g
@@ -38,8 +41,8 @@ class GroupService:
     def get_group(self, major, year):
         g = self.groups.find(lambda x: x.major == major and x.year == year)
         if not g:
-            raise NotFoundError('Групу не знайдено.')
-            return g
+            raise NotFoundError("Групу не знайдено.")
+        return g
 
     
     def add_student_to_group(self, group: Group, student_id: str):

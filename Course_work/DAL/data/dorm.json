@@ -1,16 +1,22 @@
 [
     {
-        "dorm_number": "11",
-        "room_number": "311",
-        "max_capacity": 4,
+        "dorm_number": "12",
+        "room_number": "112",
+        "max_capacity": 2,
         "students": []
     },
     {
         "dorm_number": "12",
-        "room_number": "1488",
+        "room_number": "114",
         "max_capacity": 4,
         "students": [
-            "AA 23456789"
+            "AA 123456"
         ]
+    },
+    {
+        "dorm_number": "11",
+        "room_number": "511",
+        "max_capacity": 4,
+        "students": []
     }
 ]

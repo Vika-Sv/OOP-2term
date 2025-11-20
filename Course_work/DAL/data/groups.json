@@ -1,30 +1,20 @@
 [
     {
-        "degree": "Б",
+        "degree": "B",
+        "major": "122",
+        "year": "23",
+        "course": "3",
+        "educational_program": "PS",
+        "students": [
+            "AA 123456"
+        ]
+    },
+    {
+        "degree": "M",
         "major": "121",
-        "year": "24",
+        "year": "23",
         "course": "2",
-        "educational_program": "ПІ",
-        "students": [
-            "AA 12345678"
-        ]
-    },
-    {
-        "degree": "<",
-        "major": "",
-        "year": "",
-        "course": "",
-        "educational_program": "",
+        "educational_program": "PI",
         "students": []
-    },
-    {
-        "degree": "Б",
-        "major": "123",
-        "year": "25",
-        "course": "1",
-        "educational_program": "ПІ",
-        "students": [
-            "AA 23456789"
-        ]
     }
 ]

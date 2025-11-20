@@ -8,6 +8,9 @@ class Collection(Generic[T]):
 
     def add(self, obj: T):
         self._items.append(obj)
+        
+    def remove(self, obj: T):
+        self._items.remove(obj)    
 
     def get_all(self) -> List[T]:
         return list(self._items)

@@ -24,13 +24,31 @@ class DormService:
         return room
 
     
-    def update_room(self, dorm_number, room_number, new_capacity=None):
+    def update_room(self, dorm_number = None, room_number = None, new_dorm=None, new_room=None, new_capacity=None):
         room = self.get_by_number(dorm_number, room_number)
+        
+        if new_dorm is not None or new_room is not None:
+            check_dorm = new_dorm if new_dorm is not None else dorm_number
+            check_room = new_room if new_room is not None else room_number
+
+            duplicate = self.dorm.find(
+            lambda r: r.dorm_number == check_dorm and r.room_number == check_room
+            )
+
+        if duplicate and duplicate is not room:
+            raise ValidationError('Кімната з таким номером вже існує!')
+        
+        if new_dorm is not None:
+            room.dorm_number = new_dorm
+            
+        if new_room is not None:
+            room.room_number = new_room
 
         if new_capacity is not None:
             if new_capacity < len(room.students):
                 raise CapacityError('Нова місткість менша за кількість студентів.')
             room.max_capacity = new_capacity
+            
 
         return room
 

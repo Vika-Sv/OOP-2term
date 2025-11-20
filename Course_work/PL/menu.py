@@ -119,7 +119,7 @@ class Menu:
         degree = input('Ступінь: ')
         major = input('Спеціальність: ')
         year = input('Рік: ')
-        course = input('Курс: ')
+        course = input('Група: ')
         ep = input('Освітня програма: ')
         self.group_service.add_group(degree, major, year, course, ep)
         print('Грпу було створено')
@@ -130,12 +130,13 @@ class Menu:
         print('Групу було видалено')
 
     def update_group(self):
-        course = input('Номер групи: ')
+        full_id = input('Номер групи: ')
         degree = input('Новий ступінь: ')
         major = input('Нова спеціальність: ')
-        year = input('Новий курс: ')
+        year = input('Рік: ')
+        course = input('Група: ')
         ep = input('Освітня програма: ')
-        self.group_service.update_group(course, degree or None, major or None, year or None, ep or None)
+        self.group_service.update_group( full_id, degree or None, major or None, year or None, course or None, ep or None)
         print('Групу було оновлено')
 
     def show_all_groups(self):
@@ -154,7 +155,7 @@ class Menu:
         print(self.group_service.get_group(gmaj, gyear))
 
     def add_student_to_group(self):
-        full_group_text = input('Введіть повний запис групи (наприклад Б-121-24-1-ПІ): ')
+        full_group_text = input('Введіть повний запис групи: ')
         sid = input('ID студента: ')
 
     
@@ -197,7 +198,7 @@ class Menu:
         elif c == '5': self.show_rooms()
 
     def add_room(self):
-        dorm = input('Dorm number: ')
+        dorm = input('Номер гуртожитку: ')
         room = input('Номер кімнати: ')
         cap = input('Місткість: ')
         
@@ -211,11 +212,22 @@ class Menu:
         print('Кімнату успішно додано!')
 
     def update_room(self):
-        dorm = input('Dorm number: ')
-        room = input('Номер кімнати: ')
-        cap = input('Нова місткість: ')
-        self.dorm_service.update_room(num, int(cap) if cap else None)
-        print('Кімната була оновлена')
+        dorm = input('Старий номер гуртожитку: ')
+        room = input('Старий номер кімнати: ')
+
+        new_dorm = input('Новий номер гуртожитку (Enter щоб пропустити): ')
+        new_room = input('Новий номер кімнати (Enter щоб пропустити): ')
+        new_capacity = input('Нова місткість (Enter щоб пропустити): ')
+
+        self.dorm_service.update_room(
+            dorm,
+            room,
+            new_dorm or None,
+            new_room or None,
+            int(new_capacity) if new_capacity else None
+        )
+
+        print('Кімнату оновлено!')
 
     def check_in(self):
         dorm = input('Номер гуртожитку: ')

@@ -19,10 +19,12 @@ class StudentService:
         return st
 
     def delete_student(self, student_id):
-        if not self.students.find(lambda s: s.student_id == student_id):
-            raise NotFoundError('Студент не знайдений.')
+        student = self.students.find(lambda s: s.student_id == student_id)
+        if not student:
+            raise NotFoundError("Студента не знайдено.")
 
-        self.students.remove(lambda s: s.student_id == student_id)
+        self.students.remove(student)
+        return student
 
     def update_student(self, student_id, name=None, surname=None, gender=None, address=None):
         st = self.students.find(lambda s: s.student_id == student_id)

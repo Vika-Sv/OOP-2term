@@ -10,27 +10,50 @@ class Group:
     @property
     def course(self):
         return self._course
+    
+    @course.setter
+    def course(self, value):
+        self._course = value
 
     @property
     def degree(self):
         return self._degree
+    
+    @degree.setter
+    def degree(self, value):
+        self._degree = value
 
     @property
     def major(self):
         return self._major
+    
+    @major.setter
+    def major(self, value):
+        self._major = value
 
     @property
     def year(self):
         return self._year
+    
+    @year.setter
+    def year(self, value):
+        self._year = value
 
     @property
     def educational_program(self):
         return self._educational_program
+    
+    @educational_program.setter
+    def educational_program(self, value):
+        self._educational_program = value
 
     @property
     def students(self):
         return self._students
-
+    
+    @students.setter
+    def students(self, value):
+        self._students = value
   
     def add_student(self, student_id):
         if student_id not in self._students:
