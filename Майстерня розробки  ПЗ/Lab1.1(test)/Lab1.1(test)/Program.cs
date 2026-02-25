@@ -33,7 +33,6 @@ for (int i = 0; i < 3; i++)
             A[i, j] = D[j];
             Console.Write(A[i, j] + " ");
         }
-
     }
     else
     {
@@ -55,3 +54,4 @@ for (int i = 0; i < 3; i++)
     }
 }
 Console.WriteLine("Sum of all elements in Matrix A: " + sum);
+
