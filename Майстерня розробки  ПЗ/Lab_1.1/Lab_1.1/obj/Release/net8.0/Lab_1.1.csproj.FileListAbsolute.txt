@@ -1,0 +1,15 @@
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\bin\Release\net8.0\Lab_1.1.exe
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\bin\Release\net8.0\Lab_1.1.deps.json
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\bin\Release\net8.0\Lab_1.1.runtimeconfig.json
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\bin\Release\net8.0\Lab_1.1.dll
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\bin\Release\net8.0\Lab_1.1.pdb
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\obj\Release\net8.0\Lab_1.1.GeneratedMSBuildEditorConfig.editorconfig
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\obj\Release\net8.0\Lab_1.1.AssemblyInfoInputs.cache
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\obj\Release\net8.0\Lab_1.1.AssemblyInfo.cs
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\obj\Release\net8.0\Lab_1.1.csproj.CoreCompileInputs.cache
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\obj\Release\net8.0\Lab_1.1.sourcelink.json
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\obj\Release\net8.0\Lab_1.1.dll
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\obj\Release\net8.0\refint\Lab_1.1.dll
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\obj\Release\net8.0\Lab_1.1.pdb
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\obj\Release\net8.0\Lab_1.1.genruntimeconfig.cache
+D:\OOP 2term 1 semester\Майстерня розробки  ПЗ\Lab_1.1\Lab_1.1\obj\Release\net8.0\ref\Lab_1.1.dll
