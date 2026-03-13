@@ -2,7 +2,6 @@ from VectorList import VectorList
 from LinkedStack import LinkedStack
 from Node import Node
 
-# 1. Створення екземплярів
 my_list = VectorList(10)
 my_stack = LinkedStack()
 
