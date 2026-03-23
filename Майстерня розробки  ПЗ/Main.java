@@ -21,7 +21,7 @@ public class Main {
             D[i] = random.nextInt(5) + 1; 
             System.out.print(D[i] + " ");
         }
-        System.out.println("\nArray/Matrix D");
+        System.out.println("Array/Matrix D");
 
       
         for (int i = 0; i < 3; i++) {
