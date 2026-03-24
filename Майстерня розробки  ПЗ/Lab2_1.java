@@ -10,17 +10,17 @@ public class Lab2_1 {
         String str4 = String.valueOf(num4);
         String str5 = String.valueOf(num5);
 
-        System.out.println("Чотиризначне число: " + str4);
-        System.out.println("П'ятизначне число: " + str5);
+        System.out.println("four-digit number: " + str4);
+        System.out.println("five-digit number: " + str5);
 
         int sum4 = calculateStringSum(str4);
         int sum5 = calculateStringSum(str5);
 
         int difference = sum4 - sum5;
 
-        System.out.println("Сума цифр першого: " + sum4);
-        System.out.println("Сума цифр другого: " + sum5);
-        System.out.println("Різниця сум (перша - друга): " + difference);
+        System.out.println("Sum of digits of the first number: " + sum4);
+        System.out.println("Sum of digits of the second number: " + sum5);
+        System.out.println("Difference of sums (first - second): " + difference);
     }
 
     public static int calculateStringSum(String s) {
