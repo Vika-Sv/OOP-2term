@@ -1,33 +1,41 @@
 class Node:
-    def __init__(self, data):
+    """Вузол зв'язного стека."""
+    def __init__(self, data: int, next_node=None):
         self.data = data
-        self.next = None
+        self.next = next_node
+ 
+ 
 
 class LinkedStack:
     def __init__(self):
-        self.top = None
-
-    def isEmpty(self):
-        return self.top is None
-
-    def push(self, value):
-        new_node = Node(value)
-        new_node.next = self.top
-        self.top = new_node
-        return True
-
-    def pop(self):
-        if self.isEmpty():
-            raise Exception("Стек порожній!")
-        
-        removed_data = self.top.data
-        self.top = self.top.next
-        return removed_data
-
-    def display(self):
-        current = self.top
+        self._top = None  # вершина стека
+ 
+    def is_empty(self) -> bool:
+        """Перевіряє, чи стек порожній (top is None)."""
+        return self._top is None
+ 
+    def push(self, value: int):
+        """Додає елемент на вершину стека."""
+        self._top = Node(value, self._top)
+ 
+    def pop(self) -> int:
+        """Знімає та повертає елемент з вершини стека."""
+        if self.is_empty():
+            raise IndexError("[LinkedStack] Стек порожній!")
+        value = self._top.data
+        self._top = self._top.next
+        return value
+ 
+    def peek(self) -> int:
+        """Повертає елемент з вершини без видалення."""
+        if self.is_empty():
+            raise IndexError("[LinkedStack] Стек порожній!")
+        return self._top.data
+ 
+    def print(self):
         elements = []
-        while current:
+        current = self._top
+        while current is not None:
             elements.append(str(current.data))
             current = current.next
-        print("Стек (Top -> Bottom):", " -> ".join(elements) if elements else "Порожній")
+        print(f"[LinkedStack] Стек (вершина -> дно): [{', '.join(elements)}]") 

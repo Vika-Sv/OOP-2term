@@ -1,41 +1,50 @@
 class VectorList:
-    def __init__(self, capacity):
-        self.capacity = capacity
-        self.items = [None] * capacity  # Емуляція масиву фіксованого розміру
-        self.count = 0
-
-    def isFull(self):
-        return self.count == self.capacity
-
-    def isEmpty(self):
-        return self.count == 0
-
-    def insert(self, value):
-        # Перевірка: чи це рядок, що містить ціле додатне число
-        if not (isinstance(value, str) and value.isdigit() and int(value) > 0):
-            print(f"Помилка: '{value}' не є додатним цілим числом у форматі рядка.")
+    def __init__(self, capacity: int):
+        self._data = [None] * capacity
+        self._size = 0
+ 
+    def is_full(self) -> bool:
+        """Перевіряє, чи список повний."""
+        return self._size == len(self._data)
+ 
+    def is_empty(self) -> bool:
+        """Перевіряє, чи список порожній."""
+        return self._size == 0
+ 
+    def add(self, value: int) -> bool:
+        """Вставляє елемент у кінець списку. Повертає True при успіху."""
+        if self.is_full():
+            print(f"[VectorList] Список повний! Не можна додати: {value}")
             return False
-        
-        if self.isFull():
-            print("Список заповнений!")
+        if value <= 0:
+            print(f"[VectorList] Елемент має бути додатним! Відхилено: {value}")
             return False
-        
-        self.items[self.count] = value
-        self.count += 1
+        self._data[self._size] = value
+        self._size += 1
         return True
-
-    def remove_at(self, index):
-        if self.isEmpty() or index < 0 or index >= self.count:
-            raise IndexError("Видалення неможливе: некоректний індекс або порожній список.")
-        
-        removed_item = self.items[index]
+ 
+    def remove(self, index: int) -> int:
+        """Видаляє елемент за індексом зі зсувом вліво. Повертає видалений елемент."""
+        if self.is_empty():
+            raise IndexError("[VectorList] Список порожній!")
+        if index < 0 or index >= self._size:
+            raise IndexError(f"[VectorList] Невірний індекс: {index}")
+        removed = self._data[index]
         # Зсув елементів вліво
-        for i in range(index, self.count - 1):
-            self.items[i] = self.items[i+1]
-        
-        self.items[self.count - 1] = None
-        self.count -= 1
-        return removed_item
-
-    def display(self):
-        print("Вміст списку:", self.items[:self.count])
+        for i in range(index, self._size - 1):
+            self._data[i] = self._data[i + 1]
+        self._data[self._size - 1] = None
+        self._size -= 1
+        return removed
+ 
+    def get(self, index: int) -> int:
+        if index < 0 or index >= self._size:
+            raise IndexError(f"[VectorList] Невірний індекс: {index}")
+        return self._data[index]
+ 
+    def size(self) -> int:
+        return self._size
+ 
+    def print(self):
+        elements = [str(self._data[i]) for i in range(self._size)]
+        print(f"[VectorList] Список ({self._size} елем.): [{', '.join(elements)}]")

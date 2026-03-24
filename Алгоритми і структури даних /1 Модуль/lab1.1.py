@@ -1,34 +1,59 @@
-from VectorList import VectorList
-from LinkedStack import LinkedStack
-from Node import Node
+from vectorlist import VectorList
+from node import Node
+from node import LinkedStack
 
-my_list = VectorList(10)
-my_stack = LinkedStack()
 
-# 2. Заповнення списку (Рівень 1)
-test_data = ["10", "55", "42", "61", "125", "7", "50", "99"]
-for val in test_data:
-    my_list.insert(val)
-
-print("--- Початковий стан ---")
-my_list.display()
-
-# 3. Виконання завдання 3-го рівня
-print("\n--- Обробка та переміщення ---")
-# Оскільки ми "переміщуємо", будемо йти з кінця списку, щоб видалення не псувало індекси
-i = 0
-while i < my_list.count:
-    val_int = int(my_list.items[i])
-    
-    if val_int > 50 and val_int % 2 != 0:
-        print(f"Знайдено {val_int}: переміщуємо у стек.")
-        my_stack.push(val_int)
-        my_list.remove_at(i)
-        # Не збільшуємо i, бо елементи зсунулися
-    else:
-        i += 1
-
-# 4. Виведення результатів
-print("\n--- Кінцевий стан ---")
-my_list.display()
-my_stack.display()
+def main():
+    # --- Крок 1: створення екземплярів обох структур даних ---
+    list1 = VectorList(12)
+    stack = LinkedStack()
+ 
+    # --- Крок 2: вставка елементів до списку та виведення ---
+    print("=== КРОК 1-2: Вставка елементів до списку ===")
+    values = [15, 63, 42, 71, 8, 99, 50, 57, 100, 33, 81, 4]
+    for v in values:
+        list1.add(v)
+ 
+    print("Початковий стан списку: ", end="")
+    list1.print()
+ 
+    # --- Крок 3: формування стека згідно із завданням ---
+    # Переміщуємо зі списку непарні елементи > 50 до стека
+    print()
+    print("=== КРОК 3: Переміщення непарних > 50 зі списку до стека ===")
+ 
+    i = 0
+    while i < list1.size():
+        val = list1.get(i)
+        if val % 2 != 0 and val > 50:
+            list1.remove(i)   # зсув вліво вбудований у remove()
+            stack.push(val)
+            print(f"  Переміщено: {val}")
+            # i не збільшуємо — після видалення на цій позиції новий елемент
+        else:
+            i += 1
+ 
+    # --- Крок 4: виведення вмісту обох структур ---
+    print()
+    print("=== КРОК 4: Вміст обох структур даних ===")
+    print("Перша структура  — ", end="")
+    list1.print()
+    print("Друга структура  — ", end="")
+    stack.print()
+ 
+    # --- Демонстрація захисту від порожнього стека ---
+    print()
+    print("=== Демонстрація захисту від порожнього стека ===")
+    print("Виштовхуємо всі елементи зі стека:")
+    while not stack.is_empty():
+        print(f"  pop -> {stack.pop()}")
+ 
+    print("Спроба pop з порожнього стека:")
+    try:
+        stack.pop()
+    except IndexError as e:
+        print(f"  Виняток перехоплено: {e}")
+ 
+ 
+if __name__ == "__main__":
+    main()

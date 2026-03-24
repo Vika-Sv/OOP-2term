@@ -5,7 +5,7 @@ public class Lab2_2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Введіть ваш текст:");
+        System.out.println("Enter your text:");
         
         StringBuilder inputBuilder = new StringBuilder();
         String line;
@@ -17,20 +17,38 @@ public class Lab2_2 {
         String originalText = inputBuilder.toString().trim();
 
         if (originalText.isEmpty()) {
-            System.out.println("Ви не ввели жодного тексту.");
+            System.out.println("You haven't entered any text.");
             return;
         }
 
-       
+        String[] lines = originalText.split("\\\\s,.;:!?");
+        if (lines.length < 2) {
+            System.out.println("Text must consist of at least two lines.");
+            return;
+        }
+
+        String[] sentences = originalText.split("[.!?]+");
+        int sentenceCount = 0;
+        for (String s : sentences) {
+            if (!s.trim().isEmpty()) {
+                sentenceCount++;
+            }
+        }
+        
+        if (sentenceCount < 2) {
+            System.out.println("Text must consist of at least two sentences.");
+            return;
+        }
+
         String regex = "[\\s,.;:!?\\t\\n\\r]+";
 
-        System.out.println("ВХІДНІ ПАРАМЕТРИ:");
-        System.out.println("Введений текст:\n" + originalText);
-        System.out.println("Використаний regex для спліту: " + regex);
+        System.out.println("\nPARAMETERS:");
+        System.out.println("Entered text:\n" + originalText);
+        System.out.println("Used regex for splitting: " + regex);
 
         String[] words = originalText.split(regex);
 
-        System.out.println("ОТРИМАНІ СЛОВА (ЛЕКСЕМИ):");
+        System.out.println("\nLEXEMES:");
         int count = 0;
         for (String word : words) {
             if (!word.isEmpty()) {
@@ -39,7 +57,7 @@ public class Lab2_2 {
             }
         }
         
-        System.out.println("\nВсього знайдено слів: " + count);
+        System.out.println("\nTotal: " + count);
         
         scanner.close();
     }
