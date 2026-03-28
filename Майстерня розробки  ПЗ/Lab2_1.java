@@ -26,8 +26,9 @@ public class Lab2_1 {
     public static int calculateStringSum(String s) {
         int sum = 0;
         for (int i = 0; i < s.length(); i++) {
-            sum += Integer.parseInt(String.valueOf(s.charAt(i)));
+            sum += s.charAt(i) - '0';
         }
         return sum;
     }
+    
 }

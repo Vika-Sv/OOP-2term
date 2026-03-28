@@ -21,12 +21,6 @@ public class Lab2_2 {
             return;
         }
 
-        String[] lines = originalText.split("\\\\s,.;:!?");
-        if (lines.length < 2) {
-            System.out.println("Text must consist of at least two lines.");
-            return;
-        }
-
         String[] sentences = originalText.split("[.!?]+");
         int sentenceCount = 0;
         for (String s : sentences) {
