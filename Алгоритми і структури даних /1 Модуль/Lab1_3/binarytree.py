@@ -13,7 +13,6 @@ class BinaryTree:
     def __init__(self):
         self.root: Optional[TreeNode] = None
  
-    # ── Додавання вузла ─────────────────────────
     def insert(self, student: Student) -> None:
         if self.root is None:
             self.root = TreeNode(student)
@@ -34,7 +33,6 @@ class BinaryTree:
         else:
             print(f"  [!] Квиток #{student.student_id} вже існує — пропущено.")
  
-    # ── Обхід у ширину (BFS) ────────────────────
     def bfs_traversal(self) -> List[TreeNode]:
         result = []
         if self.root is None:
@@ -49,7 +47,6 @@ class BinaryTree:
                 queue.append(node.right)
         return result
  
-    # ── Виведення дерева у таблиці ──────────────
     def print_tree(self, title: str = "Вміст дерева") -> None:
         nodes = self.bfs_traversal()
         line = "─" * 63
@@ -67,7 +64,6 @@ class BinaryTree:
                 print(node.data)
         print(f"{'═' * 63}\n")
  
-    # ── Пошук вузлів за критерієм ───────────────
     def _find_by_criteria(self, node: Optional[TreeNode],
                           course: int, served: bool,
                           result: List[Student]) -> None:
@@ -78,9 +74,7 @@ class BinaryTree:
         self._find_by_criteria(node.left, course, served, result)
         self._find_by_criteria(node.right, course, served, result)
  
-    # ══════════════════════════════════════════════
-    # МЕТОД ВИДАЛЕННЯ за критерієм (завдання 3-го рівня)
-    # ══════════════════════════════════════════════
+
     def delete_by_criteria(self, course: int = 5, served: bool = True) -> int:
         targets: List[Student] = []
         self._find_by_criteria(self.root, course, served, targets)
@@ -97,15 +91,12 @@ class BinaryTree:
         elif key > node.data.student_id:
             node.right = self._delete_node(node.right, key)
         else:
-            # Випадок 1: лист
             if node.left is None and node.right is None:
                 return None
-            # Випадок 2: один нащадок
             elif node.left is None:
                 return node.right
             elif node.right is None:
                 return node.left
-            # Випадок 3: два нащадки
             else:
                 successor = self._find_min(node.right)
                 node.data = successor.data
@@ -116,3 +107,36 @@ class BinaryTree:
         while node.left is not None:
             node = node.left
         return node
+    
+    def print_tree_visual(self, title: str = "Візуальна структура") -> None:
+        print(f"\n{'═' * 63}")
+        print(f"  {title}")
+        print(f"{'═' * 63}")
+        if self.root is None:
+            print("  (дерево порожнє)")
+        else:
+            self._print_visual_recursive(self.root, prefix="", is_left=True, is_root=True)
+        print(f"{'═' * 63}\n")
+
+    def _print_visual_recursive(self, node: TreeNode, prefix: str, is_left: bool, is_root: bool) -> None:
+        if node is None:
+            return
+
+        if node.right:
+            new_prefix = prefix + ("│  " if is_left and not is_root else "   ")
+            self._print_visual_recursive(node.right, new_prefix, False, False)
+
+        connector = ""
+        if is_root:
+            connector = "────› [Root] " # Корінь має спеціальну стрілочку
+        elif is_left:
+            connector = prefix + "└───› (L) " # Лівий нащадок використовує └─
+        else:
+            connector = prefix + "┌───› (R) " # Правий нащадок використовує ┌─
+
+        data_str = f"[#{node.data.student_id}] {node.data.last_name}"
+        print(f"  {connector}{data_str}")
+
+        if node.left:
+            new_prefix = prefix + ("   " if is_left or is_root else "│  ")
+            self._print_visual_recursive(node.left, new_prefix, True, False)

@@ -10,17 +10,14 @@ DELETED = _Deleted()
 class HashTable:
     def __init__(self, size):
         self.size = size
-        self.table = [None] * size  # None = порожньо
+        self.table = [None] * size 
  
-    # Основна хеш-функція (метод ділення)
     def h1(self, key):
         return key % self.size
  
-    # Допоміжна хеш-функція (для подвійного хешування)
     def h2(self, key):
         return 1 + (key % (self.size - 1))
  
-    # Позиція при i-му зондуванні
     def probe(self, key, i):
         return (self.h1(key) + i * self.h2(key)) % self.size
  
@@ -31,7 +28,7 @@ class HashTable:
             if self.table[pos] is None or isinstance(self.table[pos], _Deleted):
                 self.table[pos] = rect
                 return True
-        return False  # таблиця повна
+        return False
  
     def delete_by_area(self, threshold):
         count = 0

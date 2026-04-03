@@ -10,19 +10,15 @@ class Rectangle:
         self.width = round(width, 2)
         self.height = round(height, 2)
  
-
     def perimeter(self) -> float:
         return round(2 * (self.width + self.height), 2)
  
-
     def area(self) -> float:
         return round(self.width * self.height, 2)
- 
 
     def key(self) -> int:
         return round(self.perimeter())
  
-
     def __str__(self) -> str:
         return (f"Rect[({self.x}, {self.y}), "
                 f"w={self.width}, h={self.height}, "
