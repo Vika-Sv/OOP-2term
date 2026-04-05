@@ -6,7 +6,7 @@ class Student:
         self.faculty = faculty  
 
     def __str__(self):
-        return f"Student: {self.surname} {self.name}, Group: {self.group}, Faculty: {self.faculty}"
+        return f"Group: {self.group}, Faculty: {self.faculty}, Student: {self.surname} {self.name}"
     
 
     

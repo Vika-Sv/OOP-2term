@@ -1,4 +1,4 @@
-from Animal import Animal
+from Enteties.Animal import Animal
 
 class Owner:
     def __init__(self, name: str):

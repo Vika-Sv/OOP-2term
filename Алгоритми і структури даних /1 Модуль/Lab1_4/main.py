@@ -1,5 +1,4 @@
 from student import Student  
-import random
 
 def heapify(arr: list[Student], n: int, root: int) -> None:
     largest = root
@@ -29,12 +28,10 @@ def heap_sort(arr: list[Student]) -> None:
 
 
 def print_students(students: list[Student], title: str) -> None:
-    print(f"\n{'=' * 50}")
-    print(f"  {title}")
-    print(f"{'=' * 50}")
+    print(f"{title}:")
     for s in students:
         print(s)
-    print(f"{'=' * 50}")
+
 
 
 students = [
@@ -47,11 +44,11 @@ students = [
     Student("Лисенко",   "Юлія",   121, "ФКНТ"),
 ]
 
-# ── Вивід до сортування ───────────────────────────
+
 print_students(students, "ДО СОРТУВАННЯ")
 
-# ── Сортування ────────────────────────────────────
 heap_sort(students)
 
-# ── Вивід після сортування ────────────────────────
+print()
+
 print_students(students, "ПІСЛЯ СОРТУВАННЯ (за зростанням групи)")

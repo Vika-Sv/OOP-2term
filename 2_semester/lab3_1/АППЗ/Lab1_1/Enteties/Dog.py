@@ -1,5 +1,4 @@
-from Animal import Animal
-from Habitet import Habitat
+from Enteties.Animal import Animal, Habitat
 
 class Dog(Animal):
     def __init__(self, name: str, habitat: Habitat = Habitat.OWNER):
@@ -7,3 +6,6 @@ class Dog(Animal):
 
     def kind(self) -> str:
         return "Dog"
+    
+    def move_verb(self) -> str:
+        return "walks"
