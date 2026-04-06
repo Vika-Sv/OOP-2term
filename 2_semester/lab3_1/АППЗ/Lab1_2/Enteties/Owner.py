@@ -5,12 +5,20 @@ class Owner:
         self.name = name
         self._animals: list[Animal] = []
 
-    def adopt(self, animal: Animal):
-        animal.on_hungry(self._notify_hungry)
-        animal.on_died(self._notify_died)
-        animal.on_happy_change(self._notify_happy)
-        self._animals.append(animal)
+    def _notify_hungry(self, sender, args):
+        print(f"[Owner] {args.animal.name} is hungry!")
 
+    def _notify_died(self, sender, args):
+        print(f"[Owner] {args.animal.name} has died. Reason: {args.reason}")
+
+    def _notify_happy_changed(self, sender, args):   # ← add this
+        state = "happy" if args.is_happy else "unhappy"
+        print(f"[Owner] {args.animal.name} is now {state}!")
+
+    def adopt(self, animal):
+        animal.hungry_event.subscribe(self._notify_hungry)
+        animal.died_event.subscribe(self._notify_died)
+        animal.happy_changed_event.subscribe(self._notify_happy_changed)
     def release(self, animal: Animal):
         animal.off_hungry(self._notify_hungry)
         self._animals.remove(animal)

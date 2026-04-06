@@ -64,9 +64,7 @@ class BinaryTree:
                 print(node.data)
         print(f"{'═' * 63}\n")
  
-    def _find_by_criteria(self, node: Optional[TreeNode],
-                          course: int, served: bool,
-                          result: List[Student]) -> None:
+    def _find_by_criteria(self, node: Optional[TreeNode], course: int, served: bool, result: List[Student]) -> None:
         if node is None:
             return
         if node.data.course == course and node.data.served_in_army == served:
@@ -130,9 +128,9 @@ class BinaryTree:
         if is_root:
             connector = "────› [Root] " # Корінь має спеціальну стрілочку
         elif is_left:
-            connector = prefix + "└───› (L) " # Лівий нащадок використовує └─
+            connector = prefix + "└───› (L) " # Лівий нащадок 
         else:
-            connector = prefix + "┌───› (R) " # Правий нащадок використовує ┌─
+            connector = prefix + "┌───› (R) " # Правий нащадок 
 
         data_str = f"[#{node.data.student_id}] {node.data.last_name}"
         print(f"  {connector}{data_str}")
