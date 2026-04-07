@@ -12,18 +12,18 @@ public class main {
             try {
                 String line = sc.nextLine().trim();
                 if (line.isEmpty())
-                    throw new InputMismatchException("Поле не може бути порожнім!");
+                    throw new InputMismatchException("It cant be empty!");
                 int val = Integer.parseInt(line);
                 if (val < min || val > max)
                     throw new IllegalArgumentException(
-                        "Значення " + val + " поза діапазоном [" + min + ".." + max + "]");
+                        "Value " + val + " is out of range [" + min + ".." + max + "]");
                 return val;
             } catch (NumberFormatException e) {
-                System.out.println("  [Помилка типу]      Введіть ціле число!");
+                System.out.println("Error: Please enter a valid integer!");
             } catch (IllegalArgumentException e) {
-                System.out.println("  [Помилка діапазону] " + e.getMessage());
+                System.out.println("Range Error" + e.getMessage());
             } catch (InputMismatchException e) {
-                System.out.println("  [Помилка]           " + e.getMessage());
+                System.out.println("Error" + e.getMessage());
             }
         }
     }
@@ -34,18 +34,18 @@ public class main {
             try {
                 String line = sc.nextLine().trim();
                 if (line.isEmpty())
-                    throw new InputMismatchException("Поле не може бути порожнім!");
+                    throw new InputMismatchException("It cant be empty!");
                 double val = Double.parseDouble(line.replace(',', '.'));
                 if (val < min || val > max)
                     throw new IllegalArgumentException(
-                        "Значення поза діапазоном [" + min + ".." + max + "]");
+                        "Value " + val + " is out of range [" + min + ".." + max + "]");
                 return val;
             } catch (NumberFormatException e) {
-                System.out.println("  [Помилка типу]      Введіть число (наприклад: 75 або 80.5)!");
+                System.out.println("Type Error: Please enter a valid number!");
             } catch (IllegalArgumentException e) {
-                System.out.println("  [Помилка діапазону] " + e.getMessage());
+                System.out.println("Range Error" + e.getMessage());
             } catch (InputMismatchException e) {
-                System.out.println("  [Помилка]           " + e.getMessage());
+                System.out.println("Error" + e.getMessage());
             }
         }
     }
@@ -56,14 +56,14 @@ public class main {
             try {
                 String val = sc.nextLine().trim();
                 if (val.isEmpty())
-                    throw new InputMismatchException("Поле не може бути порожнім!");
+                    throw new InputMismatchException("It cant be empty!");
                 if (val.matches(".*\\d.*"))
-                    throw new IllegalArgumentException("Поле не повинно містити цифри!");
+                    throw new IllegalArgumentException("Field cannot contain digits!");
                 return val;
             } catch (InputMismatchException e) {
-                System.out.println("  [Помилка]           " + e.getMessage());
+                System.out.println("Error" + e.getMessage());
             } catch (IllegalArgumentException e) {
-                System.out.println("  [Помилка формату]   " + e.getMessage());
+                System.out.println("Format Error" + e.getMessage());
             }
         }
     }
@@ -74,14 +74,14 @@ public class main {
             try {
                 String val = sc.nextLine().trim();
                 if (val.isEmpty())
-                    throw new InputMismatchException("Поле не може бути порожнім!");
+                    throw new InputMismatchException("It cant be empty!");
                 if (val.length() < 5)
-                    throw new IllegalArgumentException("Адреса занадто коротка (мін. 5 символів)!");
+                    throw new IllegalArgumentException("Address is too short (min. 5 characters)!");
                 return val;
             } catch (InputMismatchException e) {
-                System.out.println("  [Помилка]           " + e.getMessage());
+                System.out.println("Error" + e.getMessage());
             } catch (IllegalArgumentException e) {
-                System.out.println("  [Помилка формату]   " + e.getMessage());
+                System.out.println("Format Error" + e.getMessage());
             }
         }
     }
@@ -92,15 +92,15 @@ public class main {
             try {
                 String val = sc.nextLine().trim();
                 if (val.isEmpty())
-                    throw new InputMismatchException("Поле не може бути порожнім!");
+                    throw new InputMismatchException("It cant be empty!");
                 if (!val.matches("[0-9()\\-+ ]{7,15}"))
                     throw new IllegalArgumentException(
-                        "Невірний формат! Використовуйте цифри, +, -, (), пробіл (7-15 символів).");
+                        "Invalid format! Use digits, +, -, (), space (7-15 characters).");
                 return val;
             } catch (InputMismatchException e) {
-                System.out.println("  [Помилка]           " + e.getMessage());
+                System.out.println("  [Error]           " + e.getMessage());
             } catch (IllegalArgumentException e) {
-                System.out.println("  [Помилка формату]   " + e.getMessage());
+                System.out.println("  [Format Error]   " + e.getMessage());
             }
         }
     }
@@ -113,7 +113,7 @@ public class main {
                 if (a.getId() == id) { duplicate = true; break; }
             }
             if (duplicate)
-                System.out.println("  [Помилка]           ID " + id + " вже існує! Введіть інший.");
+                System.out.println("Error: ID" + id + "Already exists! Please enter a unique ID.");
             else
                 return id;
         }
@@ -121,21 +121,21 @@ public class main {
  
  
     static void inputStudents() {
-        int count = readInt("\nСкільки абітурієнтів ввести? (мін. 5, макс. 20): ", 5, 20);
+        int count = readInt("\nEnter count of Students (min. 5, max. 10): ", 5, 10);
  
         for (int i = 1; i <= count; i++) {
-            System.out.println("\n  ┌─── Абітурієнт #" + i + " з " + count + " ───");
-            int    id       = readUniqueId("  │ ID (4-значне, 1000-9999)       : ");
-            String lastName = readString  ("  │ Прізвище                       : ");
-            String address  = readAddress ("  │ Адреса                         : ");
-            String phone    = readPhone   ("  │ Телефон (напр. 050-123-45-67)  : ");
-            System.out.println("  │ Введіть 3 оцінки (0-100):");
+            System.out.println("\nStudent #" + i + " of " + count + " ");
+            int id = readUniqueId("ID (4-digit, 1000-9999): ");
+            String surName = readString ("Last Name: ");
+            String address  = readAddress ("Address: ");
+            String phoneNumber = readPhone ("Phone (e.g., 050-123-45-67): ");
+            System.out.println("Enter 3 grades (0-100):");
             int[] grades = new int[3];
             for (int j = 0; j < 3; j++)
-                grades[j] = readInt("  │   Оцінка " + (j + 1) + "                      : ", 0, 100);
-            System.out.println("  └─── Збережено ✓");
+                grades[j] = readInt("Grade " + (j + 1) + ": ", 0, 100);
+            System.out.println("Saved");
  
-            Students.add(new Student(id, lastName, address, phone, grades));
+            Students.add(new Student(id, surName, address, phoneNumber, grades));
         }
     }
  
@@ -146,14 +146,12 @@ public class main {
     static void printTable(List<Student> list) {
         System.out.println();
         if (list.isEmpty()) {
-            System.out.println("  ╔══════════════════════════════════════════════════════╗");
-            System.out.println("  ║   Даних за заданим критерієм пошуку не знайдено!     ║");
-            System.out.println("  ╚══════════════════════════════════════════════════════╝");
+            System.out.println(" No records found!");
             return;
         }
         System.out.println(SEP);
-        System.out.printf("| %-4s | %-18s | %-30s | %-16s | %-14s | %-6s |%n",
-            "ID", "Прізвище", "Адреса", "Телефон", "Оцінки", "Серед.");
+        System.out.printf("| %-4s | %-18s | %-30s | %-16s | %-14s | %-6s |%n", 
+        "ID", "Last Name", "Address", "Phone", "Grades", "Average");
         System.out.println(SEP);
         for (Student a : list) {
             System.out.printf("| %-4d | %-18s | %-30s | %-16s | %-14s | %-6.1f |%n",
@@ -161,13 +159,10 @@ public class main {
                 a.getPhone(), a.getGradesString(), a.getAverageGrade());
         }
         System.out.println(SEP);
-        System.out.println("  Знайдено записів: " + list.size());
+        System.out.println("Records found:" + list.size());
     }
  
-    // =========================================================
-    // МЕТОДИ ПОШУКУ
-    // =========================================================
- 
+
     static List<Student> getFailingStudents() {
         List<Student> res = new ArrayList<>();
         for (Student a : Students) if (a.hasFailingGrades()) res.add(a);
@@ -180,50 +175,38 @@ public class main {
         return res;
     }
  
-    // =========================================================
-    // ГОЛОВНИЙ МЕТОД
-    // =========================================================
  
     public static void main(String[] args) {
-        System.out.println("╔══════════════════════════════════════════════════════╗");
-        System.out.println("║      СИСТЕМА ОБЛІКУ АБІТУРІЄНТІВ  (Варіант 23)       ║");
-        System.out.println("╚══════════════════════════════════════════════════════╝");
- 
-        // --- Крок 1: введення даних ---
-        System.out.println("\n--- ВВЕДЕННЯ ДАНИХ ---");
         inputStudents();
- 
-        // --- Крок 2: вивести всіх після введення ---
-        System.out.println("\n=== ВВЕДЕНІ ДАНІ (всі абітурієнти) ===");
+
+        System.out.println("\n All students");
         printTable(Students);
- 
-        // --- Крок 3: пошук ---
+
         boolean running = true;
         while (running) {
-            System.out.println("\n--- ПОШУК ---");
-            System.out.println("  1 - Абітурієнти з незадовільними оцінками (< 60)");
-            System.out.println("  2 - Абітурієнти із середнім балом вище заданого");
-            System.out.println("  0 - Вихід");
-            System.out.print("Ваш вибір: ");
+            System.out.println("\nMenu");
+            System.out.println("  1 - Students with failing grades (below 60)");
+            System.out.println("  2 - Students with average grade above a given value");
+            System.out.println("  0 - Exit");
+            System.out.print("Your choice: ");
  
             String choice = sc.nextLine().trim();
             switch (choice) {
                 case "1":
-                    System.out.println("\n=== РЕЗУЛЬТАТ: абітурієнти з незадовільними оцінками ===");
+                    System.out.println("\nResult");
                     printTable(getFailingStudents());
                     break;
                 case "2":
                     double minAvg = readDouble(
-                        "Введіть мінімальний середній бал (0-100): ", 0, 100);
-                    System.out.printf("%n=== РЕЗУЛЬТАТ: середній бал вище %.1f ===%n", minAvg);
+                        "Enter minimum average grade (0-100): ", 0, 100);
+                    System.out.printf("Result", minAvg);
                     printTable(getAboveAverage(minAvg));
                     break;
                 case "0":
-                    System.out.println("\nДо побачення!");
                     running = false;
                     break;
                 default:
-                    System.out.println("  [Помилка] Введіть 0, 1 або 2!");
+                    System.out.println("Error: wrong choice! Please enter 1, 2 or 0.");
             }
         }
         sc.close();
