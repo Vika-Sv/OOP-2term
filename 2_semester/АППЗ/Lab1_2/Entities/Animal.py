@@ -4,9 +4,9 @@ from enum import Enum
 
 
 class Habitat(Enum):
-    OWNER    = "owner's home"
+    OWNER = "owner's home"
     PET_SHOP = "pet shop"
-    WILD     = "wild"
+    WILD = "wild"
 
 
 class Animal(ABC):
@@ -15,18 +15,18 @@ class Animal(ABC):
     HUNGER_HOURS = 8
 
     def __init__(self, name: str, eyes: int, legs: int, wings: int, habitat: Habitat):
-        self.name    = name
-        self.eyes    = eyes
-        self.legs    = legs
-        self.wings   = wings
+        self.name = name
+        self.eyes = eyes
+        self.legs = legs
+        self.wings = wings
         self.habitat = habitat
 
-        self._alive     : bool              = True
-        self._happy     : bool              = (habitat == Habitat.WILD)
-        self._meals     : list[datetime]    = []
-        self._last_meal : datetime | None   = None
-        self._cleanings : int               = 0
-        self._day_start : datetime          = datetime.now()
+        self._alive: bool = True
+        self._happy: bool = (habitat == Habitat.WILD)
+        self._meals: list[datetime] = []
+        self._last_meal: datetime | None = None
+        self._cleanings: int = 0
+        self._day_start: datetime = datetime.now()
 
     @property
     def alive(self) -> bool:

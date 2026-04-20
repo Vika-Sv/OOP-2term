@@ -2,12 +2,7 @@ from Entities.Animal import Animal, Habitat
 from Entities.Owner import Owner
 from Events.AnimalEventSource import AnimalEventSource
 from BBL.AnimalService import AnimalService
-from Factories.AnimalFactory import (
-    IAnimalFactory,
-    OwnerAnimalFactory,
-    PetShopAnimalFactory,
-    WildAnimalFactory,
-)
+from Factories.AnimalFactory import (IAnimalFactory,OwnerAnimalFactory,PetShopAnimalFactory,WildAnimalFactory)
 
 
 def _factory_for_habitat(habitat: Habitat) -> IAnimalFactory:
@@ -29,8 +24,8 @@ def _show_all(owner: Owner) -> None:
     print(f"  Owner: {owner.name}   |   animals: {len(owner.animals)}")
     print(f"{'─'*70}")
     for a in owner.animals:
-        alive  = "alive " if a.alive else "DEAD  "
-        happy  = "happy  " if a.happy else "unhappy"
+        alive = "alive " if a.alive else "DEAD  "
+        happy = "happy  " if a.happy else "unhappy"
         hungry = "hungry" if a.hungry else "full  "
         print(
             f"  [{a.name:<8}] {a.kind():<8}  {alive}  {happy}  {hungry}"
@@ -64,8 +59,8 @@ def _pick_habitat() -> Habitat:
 
 def _add_animal(owner: Owner) -> None:
     print("  Species:  1-Dog  2-Owl  3-Lizard  4-Custom")
-    kind    = input("  Choice: ").strip()
-    name    = input("  Name: ").strip()
+    kind = input("  Choice: ").strip()
+    name = input("  Name: ").strip()
     if not name:
         print("  Name cannot be empty.")
         return
@@ -94,8 +89,8 @@ def _add_animal(owner: Owner) -> None:
 def _add_custom(owner: Owner, name: str, factory: IAnimalFactory) -> None:
     species = input("  Species name (e.g. Parrot): ").strip() or "Animal"
     try:
-        eyes  = int(input("  Eyes  (default 2): ").strip() or "2")
-        legs  = int(input("  Legs  (default 4): ").strip() or "4")
+        eyes = int(input("  Eyes  (default 2): ").strip() or "2")
+        legs = int(input("  Legs  (default 4): ").strip() or "4")
         wings = int(input("  Wings (default 0): ").strip() or "0")
     except ValueError:
         print("  Invalid number, using defaults.")
@@ -125,8 +120,8 @@ def run() -> None:
     owner_name = input("Your name: ").strip() or "Owner"
     owner = Owner(owner_name)
 
-    owner_factory    = OwnerAnimalFactory()
-    wild_factory     = WildAnimalFactory()
+    owner_factory = OwnerAnimalFactory()
+    wild_factory = WildAnimalFactory()
 
     for animal, factory in [
         (owner_factory.create_dog("Barsik"),    owner_factory),

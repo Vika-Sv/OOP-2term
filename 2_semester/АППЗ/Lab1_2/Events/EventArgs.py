@@ -5,7 +5,6 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from Entities.Animal import Animal
 
-
 @dataclass
 class HungryEventArgs:
     animal: "Animal"

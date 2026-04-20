@@ -1,10 +1,5 @@
 from Events.Event import Event
-from Events.EventArgs import (
-    HungryEventArgs,
-    DiedEventArgs,
-    HappyChangedEventArgs,
-    FedEventArgs,
-)
+from Events.EventArgs import (HungryEventArgs, DiedEventArgs, HappyChangedEventArgs, FedEventArgs)
 from Entities.Animal import Animal
 
 
@@ -12,10 +7,10 @@ class AnimalEventSource:
     def __init__(self, animal: Animal):
         self._animal = animal
 
-        self.on_hungry       : Event[HungryEventArgs]       = Event()
-        self.on_died         : Event[DiedEventArgs]         = Event()
+        self.on_hungry : Event[HungryEventArgs] = Event()
+        self.on_died : Event[DiedEventArgs] = Event()
         self.on_happy_changed: Event[HappyChangedEventArgs] = Event()
-        self.on_fed          : Event[FedEventArgs]          = Event()
+        self.on_fed : Event[FedEventArgs] = Event()
 
     @property
     def animal(self) -> Animal:

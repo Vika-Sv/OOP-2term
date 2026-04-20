@@ -1,11 +1,6 @@
 from Entities.Animal import Animal
 from Events.AnimalEventSource import AnimalEventSource
-from Events.EventArgs import (
-    HungryEventArgs,
-    DiedEventArgs,
-    HappyChangedEventArgs,
-    FedEventArgs,
-)
+from Events.EventArgs import (HungryEventArgs, DiedEventArgs, HappyChangedEventArgs,FedEventArgs)
 
 class Owner:
     def __init__(self, name: str):
@@ -13,10 +8,10 @@ class Owner:
         self._entries: list[tuple[Animal, AnimalEventSource]] = []
 
     def adopt(self, animal: Animal, source: AnimalEventSource) -> None:
-        source.on_hungry        += self._handle_hungry
-        source.on_died          += self._handle_died
+        source.on_hungry += self._handle_hungry
+        source.on_died += self._handle_died
         source.on_happy_changed += self._handle_happy_changed
-        source.on_fed           += self._handle_fed
+        source.on_fed += self._handle_fed
         self._entries.append((animal, source))
 
     def release(self, animal: Animal) -> None:
@@ -24,10 +19,10 @@ class Owner:
         if entry is None:
             return
         _, source = entry
-        source.on_hungry        -= self._handle_hungry
-        source.on_died          -= self._handle_died
+        source.on_hungry -= self._handle_hungry
+        source.on_died -= self._handle_died
         source.on_happy_changed -= self._handle_happy_changed
-        source.on_fed           -= self._handle_fed
+        source.on_fed -= self._handle_fed
         self._entries.remove(entry)
 
     @property
