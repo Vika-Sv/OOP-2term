@@ -7,9 +7,9 @@ from Factories.AnimalFactory import (IAnimalFactory,OwnerAnimalFactory,PetShopAn
 
 def _factory_for_habitat(habitat: Habitat) -> IAnimalFactory:
     return {
-        Habitat.OWNER:    OwnerAnimalFactory(),
+        Habitat.OWNER: OwnerAnimalFactory(),
         Habitat.PET_SHOP: PetShopAnimalFactory(),
-        Habitat.WILD:     WildAnimalFactory(),
+        Habitat.WILD: WildAnimalFactory(),
     }[habitat]
 
 
@@ -124,9 +124,9 @@ def run() -> None:
     wild_factory = WildAnimalFactory()
 
     for animal, factory in [
-        (owner_factory.create_dog("Barsik"),    owner_factory),
-        (owner_factory.create_owl("Buba"),       owner_factory),
-        (wild_factory.create_lizard("Liza"),     wild_factory),
+        (owner_factory.create_dog("Barsik"), owner_factory),
+        (owner_factory.create_owl("Buba"), owner_factory),
+        (wild_factory.create_lizard("Liza"), wild_factory),
     ]:
         source = AnimalEventSource(animal)
         owner.adopt(animal, source)

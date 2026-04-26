@@ -5,7 +5,7 @@ from Events.EventArgs import (HungryEventArgs, DiedEventArgs, HappyChangedEventA
 class Owner:
     def __init__(self, name: str):
         self.name = name
-        self._entries: list[tuple[Animal, AnimalEventSource]] = []
+        self._entries: list[tuple[Animal, AnimalEventSource]] = [] # list of current animals and their sources
 
     def adopt(self, animal: Animal, source: AnimalEventSource) -> None:
         source.on_hungry += self._handle_hungry
@@ -37,7 +37,6 @@ class Owner:
         entry = self._find_entry(animal)
         return entry[1] if entry else None
 
-
     def _handle_hungry(self, args: HungryEventArgs) -> None:
         self._notify(f"{args.animal.name} is hungry!")
 
@@ -50,7 +49,6 @@ class Owner:
 
     def _handle_fed(self, args: FedEventArgs) -> None:
         self._notify(f"{args.animal.name} ate. Meals today: {args.meals_today}/{args.animal.MAX_MEALS}")
-
 
     def _notify(self, message: str) -> None:
         self.pending_notifications.append(f"[{self.name}] {message}")

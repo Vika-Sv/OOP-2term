@@ -3,7 +3,6 @@ from Entities.Animal import Animal, Habitat
 from Entities.Animals import Dog, Owl, Lizard
 
 class IAnimalFactory(ABC):
-
     @abstractmethod
     def create_dog(self, name: str) -> Animal: ...
 

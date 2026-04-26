@@ -7,34 +7,39 @@ class AnimalService:
     @staticmethod
     def tick_day(animal: Animal, source: AnimalEventSource) -> None:
         elapsed = (datetime.now() - animal._day_start).total_seconds()
-        if elapsed < 600:       
+        if elapsed < 600:  # for demo set to 60 
             return
 
         if animal._alive and animal.meals_today < animal.MIN_MEALS:
             animal._alive = False
             source.fire_died("starved — 0 meals in a day")
-            
-        if animal.meals_today >= animal.MIN_MEALS:
+
+        if animal._alive and animal.meals_today >= animal.MIN_MEALS:
+            meals = animal._meals
             intervals = [
-                (animal._meals[i+1] - animal._meals[i]).total_seconds()
-                for i in range(len(animal._meals) - 1)
+                (meals[i + 1] - meals[i]).total_seconds()
+                for i in range(len(meals) - 1)
             ]
-        if intervals:
-            avg = sum(intervals) / len(intervals)
-        for interval in intervals:
-            if abs(interval - avg) > avg * 0.5:
-                animal._alive = False
-                source.fire_died("irregular feeding schedule")
+            if intervals and any(i > 0 for i in intervals):  
+                avg = sum(intervals) / len(intervals)
+                if avg > 0:  
+                    for interval in intervals:
+                        if abs(interval - avg) > avg * 0.5:
+                            animal._alive = False
+                            source.fire_died("irregular feeding schedule")
+                            break
 
         animal._meals.clear()
         animal._cleanings = 0
         animal._day_start = datetime.now()
 
+   
     @staticmethod
     def check_hunger(animal: Animal, source: AnimalEventSource) -> None:
         if animal._alive and animal.hungry:
             source.fire_hungry()
 
+   
     @staticmethod
     def eat(animal: Animal, source: AnimalEventSource) -> bool:
         if not animal._alive:
@@ -63,8 +68,7 @@ class AnimalService:
     @staticmethod
     def fly(animal: Animal) -> bool:
         return animal._alive and animal.wings > 0 and not animal.hungry
-
-
+    
     @staticmethod
     def _update_happy(animal: Animal, source: AnimalEventSource) -> None:
         should_be_happy = (

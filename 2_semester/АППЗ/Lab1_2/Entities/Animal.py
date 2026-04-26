@@ -12,7 +12,7 @@ class Habitat(Enum):
 class Animal(ABC):
     MAX_MEALS = 5
     MIN_MEALS = 1
-    HUNGER_HOURS = 8
+    HUNGER_HOURS = 8 #for demo set to 0.05
 
     def __init__(self, name: str, eyes: int, legs: int, wings: int, habitat: Habitat):
         self.name = name
